@@ -23,3 +23,8 @@ streamlit.dataframe(fruits_to_show)
 streamlit.header("Fruityvice Fruit Advice!")
 fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 streamlit.text(fruityvice_response.json())
+
+# Takes json data and normalizes it to key value structure
+fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
+# return the normalized json as a dataframe
+streamlit.dataframe(fruityvice_normalized)
